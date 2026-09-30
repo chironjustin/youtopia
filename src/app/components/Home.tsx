@@ -370,8 +370,8 @@ export default function Home() {
         )}
       </button>
 
-      <div className="landing-frame m-auto w-full max-w-2xl">
-        <div className="landing-panels grid h-[58dvh] grid-cols-[3.5rem_minmax(0,1fr)] gap-8 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-12">
+        <div className="landing-frame m-auto w-full">
+          <div className="landing-panels grid grid-cols-[3.5rem_minmax(0,1fr)] gap-8 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-12">
           {/* Entry Button */}
           <form onSubmit={handleSubmit} className="h-full subtle-wave">
             <button
@@ -430,14 +430,24 @@ export default function Home() {
       </div>
 
       <style>{`
-        html, body, #root {
-          background-color: #faf9f7 !important;
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-        }
+            html, body, #root {
+              background-color: #faf9f7 !important;
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              -webkit-text-size-adjust: 100%;
+              text-size-adjust: 100%;
+            }
+
+            .landing-frame {
+              width: min(100%, 44rem);
+            }
+
+            .landing-panels {
+              height: min(58dvh, 34rem);
+            }
         
         @keyframes wave {
           0% { transform: scaleX(1) scaleY(1); }
@@ -515,12 +525,29 @@ export default function Home() {
           margin: 0 0 clamp(0.65rem, 1.8vh, 1.25rem);
         }
 
-        @media (max-height: 600px) {
-          .landing-frame {
-            transform: scale(0.82);
-          }
-        }
-      `}</style>
+            @media (max-height: 600px) {
+              .landing-frame {
+                transform: scale(0.82);
+              }
+            }
+
+            @media (max-width: 640px) {
+              .landing-frame {
+                width: 100%;
+              }
+
+              .landing-panels {
+                height: min(56dvh, 30rem);
+                gap: 1.5rem;
+              }
+
+              .landing-description-copy {
+                padding: 0.75rem;
+                font-size: 0.7rem;
+                line-height: 1.35;
+              }
+            }
+          `}</style>
     </div>
   );
 }
