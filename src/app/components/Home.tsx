@@ -20,6 +20,8 @@ const landingDescription = [
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [hasAcceptedEntry, setHasAcceptedEntry] = useState(false);
+  const [showEntryAgreementError, setShowEntryAgreementError] = useState(false);
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -128,6 +130,12 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!hasAcceptedEntry) {
+      setShowEntryAgreementError(true);
+      return;
+    }
+
     setIsAuthenticated(true);
   };
 
@@ -397,6 +405,29 @@ export default function Home() {
           </button>
         </form>
 
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 w-[calc(100%-3rem)] max-w-md -translate-x-1/2 sm:bottom-10">
+        <label className="flex cursor-pointer items-start gap-3 text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs">
+          <input
+            type="checkbox"
+            checked={hasAcceptedEntry}
+            onChange={(e) => {
+              setHasAcceptedEntry(e.target.checked);
+              if (e.target.checked) {
+                setShowEntryAgreementError(false);
+              }
+            }}
+            className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#3a3a3a]"
+          />
+          <span>
+            I agree to be open to the following content on the website and understand that whatever happens from here could cause a change in my life.
+          </span>
+        </label>
+
+        <div className="mt-3 min-h-5 text-center text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs" role="alert">
+          {showEntryAgreementError && 'You have not agreed to enter higher consciousness.'}
+        </div>
       </div>
 
       <style>{`
