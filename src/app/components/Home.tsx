@@ -363,42 +363,40 @@ export default function Home() {
         )}
       </button>
 
-      <div className="relative w-full max-w-5xl">
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-[minmax(6rem,1fr)_minmax(3.25rem,0.7fr)_minmax(4rem,1fr)] items-center gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(9rem,0.8fr)_minmax(0,1fr)] sm:gap-10"
-        >
-          <button
-            type="submit"
-            className="w-full max-w-xs justify-self-start whitespace-nowrap bg-[#1a1a1a] px-2 py-3 text-[7px] tracking-[0.15em] text-[#888888] transition-all duration-300 hover:bg-[#2a2a2a] sm:px-0 sm:py-2 sm:text-[10px] sm:tracking-[0.3em] subtle-wave"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            ENTER THE ZOO
-          </button>
+      <div className="landing-rotation w-full max-w-xs">
+        {/* Wobbling Eye Logo */}
+        <div className="mb-10 flex justify-center subtle-wave">
+          <img
+            src={eyeLogo}
+            alt="Eye"
+            className="wobble-eye w-32 h-auto opacity-30"
+          />
+        </div>
 
-          <div className="w-full justify-self-center subtle-wave">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5 subtle-wave">
+          <div>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="•••••••"
-              className="w-full bg-transparent border-b border-[#3a3a3a] px-0 py-2 text-center text-[9px] tracking-[0.1em] text-[#1a1a1a] transition-colors placeholder:text-[#5a5a5a] focus:border-[#2a2a2a] focus:outline-none sm:text-xs sm:tracking-[0.15em]"
+              className="w-full bg-transparent border-b border-[#3a3a3a] px-0 py-2 text-center text-xs tracking-[0.15em] placeholder:text-[#5a5a5a] text-[#1a1a1a] focus:outline-none focus:border-[#2a2a2a] transition-colors"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             />
           </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] tracking-[0.3em] hover:bg-[#2a2a2a] transition-all duration-300"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            ENTER THE ZOO
+          </button>
         </form>
 
-        {/* Wobbling Eye Logo */}
-        <div className="absolute right-0 top-1/2 flex -translate-y-1/2 justify-end subtle-wave">
-          <img
-            src={eyeLogo}
-            alt="Eye"
-            className="wobble-eye w-16 h-auto opacity-30 sm:w-32"
-          />
-        </div>
-
-        {/* Error Message */}
-        <div className="absolute left-0 right-0 top-full mt-4 h-8 flex items-center justify-center">
+        {/* Error Message - Fixed Space */}
+        <div className="h-8 mt-4 flex items-center justify-center">
           {showError && (
             <div className="text-center text-[#3a3a3a] text-xs tracking-[0.2em] font-light">
               Try again.
@@ -456,6 +454,17 @@ export default function Home() {
         .subtle-wave {
           animation: subtleWave 32s ease-in-out infinite;
           transform-origin: center;
+        }
+
+        .landing-rotation {
+          transform: rotate(90deg);
+          transform-origin: center;
+        }
+
+        @media (max-width: 400px) {
+          .landing-rotation {
+            transform: rotate(90deg) scale(0.82);
+          }
         }
       `}</style>
     </div>
