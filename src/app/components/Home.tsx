@@ -11,6 +11,12 @@ const image_05f8943f6cc1cb1040fb70a7c35ca74cec3b0150 = '/assets/gallery-6.png';
 const folderIcon = '/assets/folder-icon.png';
 const fileIcon = '/assets/file-icon.png';
 const landingButtonLabel = ['E', 'N', 'T', 'E', 'R', null, 'Y', 'O', 'U', 'T', 'O', 'P', 'I', 'A'];
+const landingDescription = [
+  'Youtopia is a creative multiciplinary project born from Berlin, Germany.',
+  'We host (but are not limited to) live immersive experiences, plant medicine workshops, sauna raves,',
+  'Sometimes these practices mix and make humans and concept art merge till the lines where which begins are not clear.',
+  'Our intention is to bring more understanding to the complexity of human nature and ultimately - healing, through fun and sometimes quite ambitious experiences.',
+];
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -359,12 +365,16 @@ export default function Home() {
       <div className="landing-rotation w-full max-w-xs">
         {/* Animated Text Box */}
         <div className="mb-10 subtle-wave">
-          <textarea
+          <div
             aria-label="Youtopia text"
-            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            className="wobble-content h-32 w-full resize-none border border-[#3a3a3a] bg-transparent px-4 py-3 text-xs leading-relaxed text-[#3a3a3a] placeholder:text-[#5a5a5a] focus:outline-none focus:border-[#2a2a2a] transition-colors"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          />
+            className="landing-description wobble-content"
+          >
+            <div className="landing-description-copy" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              {landingDescription.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Form */}
@@ -458,6 +468,30 @@ export default function Home() {
 
         .landing-button-word-break {
           width: 1rem;
+        }
+
+        .landing-description {
+          position: relative;
+          width: 100%;
+          height: 8rem;
+          overflow: hidden;
+          border: 1px solid #3a3a3a;
+        }
+
+        .landing-description-copy {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 8rem;
+          height: 20rem;
+          color: #3a3a3a;
+          font-size: 0.6rem;
+          line-height: 1.35;
+          transform: translate(-50%, -50%) rotate(-90deg);
+        }
+
+        .landing-description-copy p {
+          margin: 0 0 0.7rem;
         }
 
         @media (max-width: 400px), (max-height: 400px) {
