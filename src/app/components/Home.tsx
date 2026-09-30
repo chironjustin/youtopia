@@ -11,6 +11,7 @@ const image_05f8943f6cc1cb1040fb70a7c35ca74cec3b0150 = '/assets/gallery-6.png';
 const eyeLogo = '/assets/eye-logo.png';
 const folderIcon = '/assets/folder-icon.png';
 const fileIcon = '/assets/file-icon.png';
+const landingButtonLabel = ['E', 'N', 'T', 'E', 'R', null, 'Y', 'O', 'U', 'T', 'O', 'P', 'I', 'A'];
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -370,10 +371,19 @@ export default function Home() {
         <form onSubmit={handleSubmit} className="subtle-wave">
           <button
             type="submit"
-            className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] tracking-[0.3em] hover:bg-[#2a2a2a] transition-all duration-300"
+            aria-label="Enter Youtopia"
+            className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] hover:bg-[#2a2a2a] transition-all duration-300"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            Enter Youtopia
+            <span className="landing-button-label" aria-hidden="true">
+              {landingButtonLabel.map((character, index) =>
+                character ? (
+                  <span key={`${character}-${index}`}>{character}</span>
+                ) : (
+                  <span key="word-break" className="landing-button-word-break" />
+                ),
+              )}
+            </span>
           </button>
         </form>
 
@@ -432,6 +442,22 @@ export default function Home() {
         .landing-rotation {
           transform: rotate(90deg);
           transform-origin: center;
+        }
+
+        .landing-button-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+        }
+
+        .landing-button-label > span:not(.landing-button-word-break) {
+          display: inline-flex;
+          transform: rotate(-90deg);
+        }
+
+        .landing-button-word-break {
+          width: 1rem;
         }
 
         @media (max-width: 400px), (max-height: 400px) {
