@@ -149,16 +149,16 @@ export default function Home() {
   };
 
   if (isAuthenticated) {
-    // If second folder is authenticated, show complete black screen
+    // If second folder is authenticated, show a complete blank screen
     if (isSecondFolderAuthenticated) {
       return (
-        <div className="fixed inset-0 bg-black" style={{ fontFamily: "'Cormorant Garamond', serif" }}></div>
+        <div className="fixed inset-0 bg-[#faf9f7]" style={{ fontFamily: "'Cormorant Garamond', serif" }}></div>
       );
     }
 
     return (
       <div 
-        className="fixed inset-0 bg-black overflow-hidden" 
+        className="fixed inset-0 bg-[#faf9f7] overflow-hidden"
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
         onClick={() => {
           setSelectedImage(null);
@@ -325,7 +325,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#888888] flex items-center justify-center p-6 relative" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+    <div className="min-h-screen bg-[#faf9f7] flex items-center justify-center p-6 relative" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
       {/* Music Toggle Button - Top Right */}
       <button
         onClick={() => setIsMusicOn(!isMusicOn)}
@@ -381,7 +381,7 @@ export default function Home() {
 
       <style>{`
         html, body, #root {
-          background-color: #888888 !important;
+          background-color: #faf9f7 !important;
           margin: 0;
           padding: 0;
           width: 100%;

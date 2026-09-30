@@ -2,7 +2,7 @@ const pageImage = '/assets/page-image.png';
 
 export default function Page1() {
   return (
-    <div className="fixed inset-0 bg-black flex items-center justify-center">
+    <div className="fixed inset-0 bg-[#faf9f7] flex items-center justify-center">
       <img 
         src={pageImage}
         alt="Page 1"
