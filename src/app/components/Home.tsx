@@ -13,12 +13,10 @@ const folderIcon = '/assets/folder-icon.png';
 const fileIcon = '/assets/file-icon.png';
 
 export default function Home() {
-  const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [showError, setShowError] = useState(false);
   const [showFolderPopup, setShowFolderPopup] = useState(false);
   const [folderPassword, setFolderPassword] = useState('');
   const [isFolderAuthenticated, setIsFolderAuthenticated] = useState(false);
@@ -124,12 +122,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'meow') {
-      setIsAuthenticated(true);
-    } else {
-      setShowError(true);
-      setTimeout(() => setShowError(false), 1500);
-    }
+    setIsAuthenticated(true);
   };
 
   const handleFolderSubmit = (e: React.FormEvent) => {
@@ -374,18 +367,7 @@ export default function Home() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5 subtle-wave">
-          <div>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="•••••••"
-              className="w-full bg-transparent border-b border-[#3a3a3a] px-0 py-2 text-center text-xs tracking-[0.15em] placeholder:text-[#5a5a5a] text-[#1a1a1a] focus:outline-none focus:border-[#2a2a2a] transition-colors"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            />
-          </div>
-
+        <form onSubmit={handleSubmit} className="subtle-wave">
           <button
             type="submit"
             className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] tracking-[0.3em] hover:bg-[#2a2a2a] transition-all duration-300"
@@ -394,15 +376,6 @@ export default function Home() {
             ENTER THE ZOO
           </button>
         </form>
-
-        {/* Error Message - Fixed Space */}
-        <div className="h-8 mt-4 flex items-center justify-center">
-          {showError && (
-            <div className="text-center text-[#3a3a3a] text-xs tracking-[0.2em] font-light">
-              Try again.
-            </div>
-          )}
-        </div>
 
       </div>
 
