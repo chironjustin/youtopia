@@ -11,7 +11,6 @@ const image_05f8943f6cc1cb1040fb70a7c35ca74cec3b0150 = '/assets/gallery-6.png';
 const eyeLogo = '/assets/eye-logo.png';
 const folderIcon = '/assets/folder-icon.png';
 const fileIcon = '/assets/file-icon.png';
-const gatheringImage = '/assets/gathering-image.png';
 
 export default function Home() {
   const [password, setPassword] = useState('');
@@ -28,7 +27,6 @@ export default function Home() {
   const [secondFolderPassword, setSecondFolderPassword] = useState('');
   const [isSecondFolderAuthenticated, setIsSecondFolderAuthenticated] = useState(false);
   const [showSecondFolderError, setShowSecondFolderError] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isMusicOn, setIsMusicOn] = useState(false);
   const [musicStarted, setMusicStarted] = useState(false);
   
@@ -94,35 +92,6 @@ export default function Home() {
       }
     }
   }, [isAuthenticated]);
-
-  // Countdown timer effect
-  useEffect(() => {
-    const targetDate = new Date('2026-05-09T22:30:00+01:00'); // CET is UTC+1
-    let interval: ReturnType<typeof setInterval>;
-    
-    const updateTimer = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-      
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-        
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        // Keep timer at zero once countdown is complete
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        clearInterval(interval);
-      }
-    };
-    
-    updateTimer();
-    interval = setInterval(updateTimer, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
 
   // Array of unique images for each file
   const fileImages = [
@@ -435,21 +404,6 @@ export default function Home() {
           )}
         </div>
 
-        {/* Countdown Timer - Between Enter Button and Image */}
-        <div className="mt-4 text-center">
-          <div className="text-[#2a2a2a] text-sm tracking-[0.2em] font-light" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            {String(timeLeft.days).padStart(2, '0')}:{String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
-          </div>
-        </div>
-
-        {/* Gathering Image - Between Enter Button and Waitlist */}
-        <div className="mt-4 mb-4 flex justify-center">
-          <img 
-            src={gatheringImage} 
-            alt="Gathering" 
-            className="w-40 h-auto"
-          />
-        </div>
       </div>
 
       <style>{`
