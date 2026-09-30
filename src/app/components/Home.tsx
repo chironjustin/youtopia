@@ -8,7 +8,6 @@ const image_05bb9db8f082d9839e99cad1a93bdd8818a79f67 = '/assets/gallery-4.png';
 const image_3feb12ec293f0c6a5b02b53bde4d1f360474b603 = '/assets/gallery-5.png';
 const image_05f8943f6cc1cb1040fb70a7c35ca74cec3b0150 = '/assets/gallery-6.png';
 
-const eyeLogo = '/assets/eye-logo.png';
 const folderIcon = '/assets/folder-icon.png';
 const fileIcon = '/assets/file-icon.png';
 const landingButtonLabel = ['E', 'N', 'T', 'E', 'R', null, 'Y', 'O', 'U', 'T', 'O', 'P', 'I', 'A'];
@@ -358,12 +357,13 @@ export default function Home() {
       </button>
 
       <div className="landing-rotation w-full max-w-xs">
-        {/* Wobbling Eye Logo */}
-        <div className="mb-10 flex justify-center subtle-wave">
-          <img
-            src={eyeLogo}
-            alt="Eye"
-            className="wobble-eye w-32 h-auto opacity-30"
+        {/* Animated Text Box */}
+        <div className="mb-10 subtle-wave">
+          <textarea
+            aria-label="Youtopia text"
+            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            className="wobble-content h-32 w-full resize-none border border-[#3a3a3a] bg-transparent px-4 py-3 text-xs leading-relaxed text-[#3a3a3a] placeholder:text-[#5a5a5a] focus:outline-none focus:border-[#2a2a2a] transition-colors"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           />
         </div>
 
@@ -429,7 +429,7 @@ export default function Home() {
           100% { transform: scaleX(1) scaleY(1); }
         }
         
-        .wobble-eye {
+        .wobble-content {
           animation: wave 28s ease-in-out infinite;
           transform-origin: center;
         }
