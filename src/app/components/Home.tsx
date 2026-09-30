@@ -339,7 +339,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf9f7] flex items-center justify-center p-6 relative" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+    <div className="relative flex h-[100dvh] overflow-hidden bg-[#faf9f7] px-6 py-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
       {/* Music Toggle Button - Top Right */}
       <button
         onClick={() => setIsMusicOn(!isMusicOn)}
@@ -370,9 +370,29 @@ export default function Home() {
         )}
       </button>
 
-      <div className="landing-rotation w-full max-w-xs">
-        {/* Animated Text Box */}
-        <div className="mb-10 subtle-wave">
+      <div className="landing-frame m-auto w-full max-w-2xl">
+        <div className="landing-panels grid h-[58dvh] grid-cols-[3.5rem_minmax(0,1fr)] gap-8 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-12">
+          {/* Entry Button */}
+          <form onSubmit={handleSubmit} className="h-full subtle-wave">
+            <button
+              type="submit"
+              aria-label="Enter Youtopia"
+              className="h-full w-full bg-[#1a1a1a] text-[#888888] text-[10px] hover:bg-[#2a2a2a] transition-all duration-300"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              <span className="landing-button-label" aria-hidden="true">
+                {landingButtonLabel.map((character, index) =>
+                  character ? (
+                    <span key={`${character}-${index}`}>{character}</span>
+                  ) : (
+                    <span key="word-break" className="landing-button-word-break" />
+                  ),
+                )}
+              </span>
+            </button>
+          </form>
+
+          {/* Animated Text Box */}
           <div
             aria-label="Youtopia text"
             className="landing-description wobble-content"
@@ -385,48 +405,27 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="subtle-wave">
-          <button
-            type="submit"
-            aria-label="Enter Youtopia"
-            className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] hover:bg-[#2a2a2a] transition-all duration-300"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            <span className="landing-button-label" aria-hidden="true">
-              {landingButtonLabel.map((character, index) =>
-                character ? (
-                  <span key={`${character}-${index}`}>{character}</span>
-                ) : (
-                  <span key="word-break" className="landing-button-word-break" />
-                ),
-              )}
+        <div className="mt-5 w-full">
+          <label className="flex cursor-pointer items-start gap-3 text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs">
+            <input
+              type="checkbox"
+              checked={hasAcceptedEntry}
+              onChange={(e) => {
+                setHasAcceptedEntry(e.target.checked);
+                if (e.target.checked) {
+                  setShowEntryAgreementError(false);
+                }
+              }}
+              className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#3a3a3a]"
+            />
+            <span>
+              I agree to be open to the following content on the website and understand that whatever happens from here could cause a change in my life.
             </span>
-          </button>
-        </form>
+          </label>
 
-      </div>
-
-      <div className="absolute left-1/2 top-[calc(50%+11rem)] w-[calc(100%-3rem)] max-w-md -translate-x-1/2">
-        <label className="flex cursor-pointer items-start gap-3 text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs">
-          <input
-            type="checkbox"
-            checked={hasAcceptedEntry}
-            onChange={(e) => {
-              setHasAcceptedEntry(e.target.checked);
-              if (e.target.checked) {
-                setShowEntryAgreementError(false);
-              }
-            }}
-            className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#3a3a3a]"
-          />
-          <span>
-            I agree to be open to the following content on the website and understand that whatever happens from here could cause a change in my life.
-          </span>
-        </label>
-
-        <div className="mt-3 min-h-5 text-center text-[10px] leading-relaxed text-[#b91c1c] sm:text-xs" role="alert">
-          {showEntryAgreementError && 'You have not agreed to enter higher consciousness.'}
+          <div className="mt-3 min-h-5 text-center text-[10px] leading-relaxed text-[#b91c1c] sm:text-xs" role="alert">
+            {showEntryAgreementError && 'You have not agreed to enter higher consciousness.'}
+          </div>
         </div>
       </div>
 
@@ -437,6 +436,7 @@ export default function Home() {
           padding: 0;
           width: 100%;
           height: 100%;
+          overflow: hidden;
         }
         
         @keyframes wave {
@@ -480,54 +480,44 @@ export default function Home() {
           transform-origin: center;
         }
 
-        .landing-rotation {
-          transform: rotate(90deg);
-          transform-origin: center;
-        }
-
         .landing-button-label {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
-          gap: 0.75rem;
-        }
-
-        .landing-button-label > span:not(.landing-button-word-break) {
-          display: inline-flex;
-          transform: rotate(-90deg);
+          justify-content: space-between;
+          height: 100%;
+          padding: 1.5rem 0;
         }
 
         .landing-button-word-break {
-          width: 1rem;
+          height: 1rem;
+          flex: 0 0 1rem;
         }
 
         .landing-description {
-          position: relative;
           width: 100%;
-          height: 8rem;
+          height: 100%;
           overflow: hidden;
           border: 1px solid #3a3a3a;
         }
 
         .landing-description-copy {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 8rem;
-          height: 20rem;
+          height: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
+          padding: clamp(0.75rem, 2vw, 1.5rem);
           color: #3a3a3a;
-          font-size: 0.6rem;
-          line-height: 1.35;
-          transform: translate(-50%, -50%) rotate(-90deg);
+          font-size: clamp(0.7rem, 1.4vw, 1.15rem);
+          line-height: 1.4;
         }
 
         .landing-description-copy p {
-          margin: 0 0 0.7rem;
+          margin: 0 0 clamp(0.65rem, 1.8vh, 1.25rem);
         }
 
-        @media (max-width: 400px), (max-height: 400px) {
-          .landing-rotation {
-            transform: rotate(90deg) scale(0.82);
+        @media (max-height: 600px) {
+          .landing-frame {
+            transform: scale(0.82);
           }
         }
       `}</style>
