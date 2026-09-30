@@ -373,7 +373,7 @@ export default function Home() {
             className="w-full bg-[#1a1a1a] text-[#888888] py-2 text-[10px] tracking-[0.3em] hover:bg-[#2a2a2a] transition-all duration-300"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            ENTER THE ZOO
+            Enter Youtopia
           </button>
         </form>
 
