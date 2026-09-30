@@ -461,7 +461,7 @@ export default function Home() {
           transform-origin: center;
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 400px), (max-height: 400px) {
           .landing-rotation {
             transform: rotate(90deg) scale(0.82);
           }
