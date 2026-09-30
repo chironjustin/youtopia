@@ -407,7 +407,7 @@ export default function Home() {
 
       </div>
 
-      <div className="absolute bottom-6 left-1/2 w-[calc(100%-3rem)] max-w-md -translate-x-1/2 sm:bottom-10">
+      <div className="absolute left-1/2 top-[calc(50%+11rem)] w-[calc(100%-3rem)] max-w-md -translate-x-1/2">
         <label className="flex cursor-pointer items-start gap-3 text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs">
           <input
             type="checkbox"
@@ -425,7 +425,7 @@ export default function Home() {
           </span>
         </label>
 
-        <div className="mt-3 min-h-5 text-center text-[10px] leading-relaxed text-[#3a3a3a] sm:text-xs" role="alert">
+        <div className="mt-3 min-h-5 text-center text-[10px] leading-relaxed text-[#b91c1c] sm:text-xs" role="alert">
           {showEntryAgreementError && 'You have not agreed to enter higher consciousness.'}
         </div>
       </div>
