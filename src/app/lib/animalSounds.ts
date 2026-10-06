@@ -1,9 +1,9 @@
-export type AnimalSound = 'cat' | 'dog' | 'elephant';
+export type AnimalSound = 'cat' | 'dog' | 'duck';
 
 const animalSoundFiles: Record<AnimalSound, string> = {
-  elephant: '/assets/sounds/elephant.m4a',
-  dog: '/assets/sounds/dog.m4a',
-  cat: '/assets/sounds/cat.m4a',
+  dog: '/assets/sounds/dog.mp3',
+  duck: '/assets/sounds/duck.mp3',
+  cat: '/assets/sounds/cat.mp3',
 };
 
 export function playAnimalSound(animal: AnimalSound) {

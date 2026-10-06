@@ -21,7 +21,7 @@ export default function Home() {
         href="https://www.youtube.com/results?search_query=z00+playlist"
         target="_blank"
         rel="noreferrer"
-        onClick={() => playAnimalSound('elephant')}
+        onClick={() => playAnimalSound('duck')}
       >
         <FolderIcon />
         <span>listen-playlist.mp3</span>

@@ -10,7 +10,7 @@ type Z00PageProps = {
 export default function Z00Page({ title, children, showHeading = true }: Z00PageProps) {
   return (
     <main className={`z00-page${showHeading ? '' : ' z00-page--without-heading'}`}>
-      <Link className="z00-page__back" to="/" onClick={() => playAnimalSound('elephant')} aria-label="Back to z00 desktop">← desktop</Link>
+      <Link className="z00-page__back" to="/" onClick={() => playAnimalSound('duck')} aria-label="Back to z00 desktop">← desktop</Link>
       <section className="z00-page__content">
         {showHeading && <>
           <p className="z00-page__eyebrow">z00 / {title}</p>
