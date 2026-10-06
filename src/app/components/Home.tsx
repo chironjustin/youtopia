@@ -67,7 +67,7 @@ const styles = `
     width: max-content;
     max-width: calc(100vw - 2rem);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     color: inherit;
     text-decoration: none;
     cursor: pointer;
@@ -82,8 +82,7 @@ const styles = `
   .z00-folder-icon {
     position: relative;
     display: block;
-    margin-left: clamp(1.5rem, 3.5vw, 2rem);
-    width: clamp(8.5rem, 16vw, 10rem);
+    width: clamp(4.25rem, 8vw, 5rem);
     aspect-ratio: 1.12;
     overflow: hidden;
   }
@@ -100,8 +99,8 @@ const styles = `
 
   .z00-folder span:last-child {
     display: block;
-    margin-top: clamp(2.15rem, 3vw, 2.5rem);
-    font-size: clamp(1.15rem, 3.4vw, 1.6rem);
+    margin-top: 0.4rem;
+    font-size: clamp(0.58rem, 1.7vw, 0.8rem);
     letter-spacing: 0.04em;
     line-height: 1;
     white-space: nowrap;
@@ -118,13 +117,12 @@ const styles = `
     }
 
     .z00-folder-icon {
-      width: clamp(7.25rem, 34vw, 9rem);
-      margin-left: clamp(1rem, 5vw, 1.5rem);
+      width: clamp(3.6rem, 17vw, 4.5rem);
     }
 
     .z00-folder span:last-child {
-      margin-top: 1.5rem;
-      font-size: clamp(0.9rem, 4.6vw, 1.1rem);
+      margin-top: 0.3rem;
+      font-size: clamp(0.5rem, 2.3vw, 0.6rem);
     }
 
     .z00-folder--merch { left: 12%; top: 17%; }
