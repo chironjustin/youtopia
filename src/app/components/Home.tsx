@@ -58,7 +58,7 @@ const styles = `
     border-bottom: 4px solid #222;
     background: #f8f8f8;
     color: #171717;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Share Tech Mono", "Courier New", monospace;
   }
 
   .z00-folder {

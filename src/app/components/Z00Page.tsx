@@ -33,7 +33,7 @@ const styles = `
     padding: clamp(1.5rem, 5vw, 4rem);
     background: #f8f8f8;
     color: #171717;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Share Tech Mono", "Courier New", monospace;
   }
 
   .z00-page__back, .z00-page a { color: inherit; }
@@ -42,4 +42,6 @@ const styles = `
   .z00-page__eyebrow { margin: 0 0 1.5rem; font-size: 0.8rem; letter-spacing: 0.08em; }
   .z00-page h1 { margin: 0 0 2rem; font-size: clamp(2rem, 8vw, 5rem); font-weight: 400; letter-spacing: -0.07em; }
   .z00-page p { max-width: 38rem; font-size: clamp(1rem, 2.3vw, 1.25rem); line-height: 1.55; }
+  .z00-page__support { margin-top: 3.5rem; }
+  .z00-page .z00-page__merch-link { color: #145bd7; font-weight: 400; text-underline-offset: 0.2em; }
 `;
