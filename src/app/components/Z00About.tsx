@@ -4,7 +4,7 @@ import Z00Page from './Z00Page';
 
 export default function Z00About() {
   return (
-    <Z00Page title="why z00">
+    <Z00Page title="why z00" showHeading={false}>
       <p>we love animals. but what is more important is that we learn to understand that we are also animals. just with the ability to control our selves and ideally respond rather than to react.</p>
 
       <p>we all have lust and frustration stored within our system (which is natural). and we must find an outlet to express this, otherwise it will make us unhappy and cause even more desire to break free because we suppress the true nature of our being… this is where crime and unrighteousness happens btw.</p>
