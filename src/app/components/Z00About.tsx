@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { playAnimalSound } from '../lib/animalSounds';
 import Z00Page from './Z00Page';
 
 export default function Z00About() {
@@ -13,7 +14,7 @@ export default function Z00About() {
       <p className="z00-page__support">support our mission:</p>
       <p>
         30% of all proceeds go to animal wild life foundations →{' '}
-        <Link className="z00-page__merch-link" to="/merch">buy-merch.exe</Link>
+        <Link className="z00-page__merch-link" to="/merch" onClick={() => playAnimalSound('dog')}>buy-merch.exe</Link>
       </p>
     </Z00Page>
   );

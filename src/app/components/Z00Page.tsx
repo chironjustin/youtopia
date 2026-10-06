@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { playAnimalSound } from '../lib/animalSounds';
 
 type Z00PageProps = {
   title: string;
@@ -8,7 +9,7 @@ type Z00PageProps = {
 export default function Z00Page({ title, children }: Z00PageProps) {
   return (
     <main className="z00-page">
-      <Link className="z00-page__back" to="/" aria-label="Back to z00 desktop">← desktop</Link>
+      <Link className="z00-page__back" to="/" onClick={() => playAnimalSound('elephant')} aria-label="Back to z00 desktop">← desktop</Link>
       <section className="z00-page__content">
         <p className="z00-page__eyebrow">z00 / {title}</p>
         <h1>{title}</h1>

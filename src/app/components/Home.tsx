@@ -1,15 +1,16 @@
 import { Link } from 'react-router';
+import { playAnimalSound, type AnimalSound } from '../lib/animalSounds';
 
 const folders = [
-  { label: 'buy-merch.exe', to: '/merch', position: 'merch' },
-  { label: 'why-z00.read', to: '/about', position: 'about' },
+  { label: 'buy-merch.exe', to: '/merch', position: 'merch', sound: 'dog' as AnimalSound },
+  { label: 'why-z00.read', to: '/about', position: 'about', sound: 'cat' as AnimalSound },
 ];
 
 export default function Home() {
   return (
     <main className="z00-desktop" aria-label="z00 desktop">
-      {folders.map(({ label, to, position }) => (
-        <Link className={`z00-folder z00-folder--${position}`} to={to} key={label}>
+      {folders.map(({ label, to, position, sound }) => (
+        <Link className={`z00-folder z00-folder--${position}`} to={to} onClick={() => playAnimalSound(sound)} key={label}>
           <FolderIcon />
           <span>{label}</span>
         </Link>
@@ -20,6 +21,7 @@ export default function Home() {
         href="https://www.youtube.com/results?search_query=z00+playlist"
         target="_blank"
         rel="noreferrer"
+        onClick={() => playAnimalSound('elephant')}
       >
         <FolderIcon />
         <span>listen-playlist.mp3</span>
